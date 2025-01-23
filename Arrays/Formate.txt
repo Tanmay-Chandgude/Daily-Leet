@@ -1,0 +1,24 @@
+//make sure you follow the Naming Convention
+
+Formate : text file must be named as name_sirname_department 
+        eg : sangram_shitole_cs/it.text
+
+Every individual must have their own text file where he/she will upload 5 leetcode/dsa problems weekly 
+
+How to write New problems :
+ formate : count name_of_problem leetcode_PS_number(optional)
+  eg: 01 ReverseArray PS:1232(optional)
+   /*
+
+  write your code here
+
+  */
+
+  Mention Time and Space Complexity For each Problem
+
+
+  .
+  .
+  .
+  .
+  n

@@ -55,7 +55,7 @@ public class TwoSum {
             map.put(nums[i], i);
         }
         
-        // If no solution, throw an exception or return an empty array
+       
         throw new IllegalArgumentException("No two sum solution");
     }
 

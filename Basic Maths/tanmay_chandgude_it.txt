@@ -1,0 +1,212 @@
+//001 - Count Digits
+
+public class Solution {
+    public static int countDigits(int n){
+        // Write your code here.
+
+        int cnt = 0;
+        int temp = n;
+
+        while(temp > 0){
+            int digit = temp % 10;
+            temp /= 10;
+
+            if (digit !=0 && n % digit == 0){
+                cnt++;
+            }
+        }
+
+        return cnt;
+        
+    }
+}
+
+Time complexity : O(log n)
+Space complexity : O(1)
+
+//002 - Reverse a Number
+
+public class Solution {
+    public static long reverseBits(long n) {
+        long ans = 0; // Variable to store the final answer
+        
+        // Iterate over all 32 bits of the given long integer
+        for (int i = 0; i < 32; i++) {
+            // Extract the rightmost bit of n
+            long bit = n & 1;
+            
+            // Add the extracted bit to the answer, shifting it to its new position
+            ans = (ans << 1) | bit;
+            
+            // Shift n to the right to process the next bit
+            n >>= 1;
+        }
+        
+        return ans;
+    }
+}
+
+Time complexity : O(1)
+Space complexity : O(1)
+
+//003 - Check Palindrome
+
+public class Solution {
+    public static boolean palindromeNumber(int n){
+        // Write your code here.
+        int revNum = 0;
+        int dup = n;
+
+        while(n>0){
+            int ld = n % 10;
+            revNum = (revNum*10) + ld;
+            n = n/10;
+        }
+
+        if(dup == revNum){
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+Time complexity : O(log n)
+Space complexity : O(1)
+
+//004 -  GCD Or HCF
+
+class Solution {
+    public static int[] lcmAndGcd(int a, int b) {
+        // code here
+        int gcd = findGcd(a,b);
+        
+        int lcm = (a*b) / gcd;
+        
+        return new int[] {lcm , gcd};
+        
+    }
+    
+    public static int findGcd(int a, int b){
+        while(a>0 && b>0){
+            if (a>b){
+                a = a % b;
+            } else {
+                b = b % a;
+            }
+        }
+        
+        if(a == 0){
+            return b;
+        } else {
+            return a;
+        }
+        
+    }
+}
+
+Time Complexity: O(log(min(a, b)))
+
+Space Complexity: O(1)
+
+//005 - Armstrong Numbers
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Scanner to read input
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        
+        // Output result
+        System.out.println(isArmstrong(n));
+    }
+
+    public static boolean isArmstrong(int n) {
+        int original = n;
+        int sum = 0;
+        int digits = Integer.toString(n).length();
+
+        // Calculate the sum of the digits raised to the power of 'digits'
+        while (n > 0) {
+            int digit = n % 10;
+            sum += Math.pow(digit, digits);
+            n /= 10;
+        }
+
+        // Check if the sum is equal to the original number
+        return sum == original;
+    }
+}
+
+Time Complexity: O(log n)
+
+Space Complexity: O(1)
+
+//006 - Print all Divisors
+
+public class Solution {
+    public static int sumOfAllDivisors(int n) {
+        int totalSum = 0;
+
+        // Loop through all numbers from 1 to n
+        for (int i = 1; i <= n; i++) {
+            totalSum += sumOfDivisors(i);
+        }
+
+        return totalSum;
+    }
+
+    // Helper function to calculate the sum of divisors of a single number
+    private static int sumOfDivisors(int num) {
+        int sum = 0;
+        int sqrtNum = (int) Math.sqrt(num);
+
+        for (int i = 1; i <= sqrtNum; i++) {
+            if (num % i == 0) {
+                sum += i; // Add the divisor
+
+                // Add the counterpart divisor if it's different
+                if (i != num / i) {
+                    sum += num / i;
+                }
+            }
+        }
+
+        return sum;
+    }
+}
+
+Time Complexity: O(n * root(n))
+
+Space Complexity: O(1)
+
+//007 - Check for Prime
+
+public class Solution {
+    public static String isPrime(int num) {
+        // Initialize a counter variable to count the number of factors.
+        int cnt = 0;
+
+        // Loop through numbers from 1 to the square root of num.
+        for (int i = 1; i <= Math.sqrt(num); i++) {
+            // If num is divisible by i without any remainder.
+            if (num % i == 0) {
+                cnt++; // Increment the counter for the divisor.
+
+                // If num is not a perfect square, count its reciprocal factor.
+                if (num / i != i) {
+                    cnt++;
+                }
+            }
+        }
+
+        // Return "YES" if the number has exactly 2 factors, indicating it is prime.
+        return cnt == 2 ? "YES" : "NO";
+    }
+}
+
+Time Complexity: O(root(n))
+
+Space Complexity: O(1)
